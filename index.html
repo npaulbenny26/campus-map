@@ -141,7 +141,6 @@
             max-width: none;
         }
 
-        /* SVG Shape Overlay Layer */
         #svg-layer {
             position: absolute;
             top: 0;
@@ -172,7 +171,6 @@
             stroke-width: 4px;
         }
 
-        /* Pins Layer */
         .pin {
             position: absolute;
             width: 24px;
@@ -301,7 +299,6 @@
     <div id="map-viewport">
         <div id="map-container">
             <img id="map-image" src="" alt="Floor Plan">
-            <!-- New HTML SVG Engine Overlay Component -->
             <svg id="svg-layer" viewBox="0 0 1000 1000" preserveAspectRatio="none"></svg>
             <div id="pins-layer"></div>
         </div>
@@ -324,12 +321,19 @@
 
 <script>
     // --- CAMPUS DATA CONFIGURATION BLOCK ---
-    // Added shapes feature block! You can trace polygon vertices relative to a 1000x1000 coordinate grid.
     const campusConfig = {
         'campus-overview': {
             name: 'Campus Grounds',
             isOutdoor: true,
-            image: 'campus-ground-map.png',
-            shapes: [], // Outdoor layout shapes can go here later
+            image: 'campus-overview.png',
+            shapes: [],
             pins: [
-                { id: 'p1', name: 'Main Visitor Parking', cat: 'outdoor', x: 25, y: 75, desc: 'Free parking layout designated for campus guests and incoming visitors.' },
+                { id: 'ext_main', name: 'Main Complex Entrance', cat: 'outdoor', x: 50, y: 50, desc: 'Primary entrance layout for the main complex.' },
+                { id: 'ext_newman', name: 'Newman Hall Entrance', cat: 'outdoor', x: 35, y: 40, desc: 'Entrance access leading into Newman Hall.' },
+                { id: 'ext_bede', name: 'Bede Hall Entrance', cat: 'outdoor', x: 65, y: 40, desc: 'Entrance access leading into Bede Hall.' }
+            ]
+        },
+        'main-building': {
+            name: 'Main Building',
+            isOutdoor: false,
+            floors: {
